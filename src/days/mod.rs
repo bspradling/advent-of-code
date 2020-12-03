@@ -1,4 +1,6 @@
-#[path = "day1/day1.rs"]
-pub mod day1;
-#[path = "day2/day2.rs"]
-pub mod day2;
+#[path = "1/one.rs"]
+pub mod one;
+#[path = "3/three.rs"]
+pub mod three;
+#[path = "2/two.rs"]
+pub mod two;

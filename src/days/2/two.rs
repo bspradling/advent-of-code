@@ -17,9 +17,7 @@ pub async fn solve() -> Result<()> {
     let mut sled_rental_successes = 0;
     let mut toboggan_corporate_successes = 0;
 
-    let password_entries: Vec<&str> = include_str!("../../../resources/day2.txt")
-        .split("\n")
-        .collect();
+    let password_entries: Vec<&str> = include_str!("resources/input.txt").split("\n").collect();
 
     for entry in password_entries {
         debug!("Processing {}...", entry);
@@ -45,8 +43,8 @@ pub async fn solve() -> Result<()> {
         }
     }
 
-    info!("Part One Answer is {}", sled_rental_successes);
-    info!("Part Two Answer is {}", toboggan_corporate_successes);
+    info!("Part 1 Answer is {}", sled_rental_successes);
+    info!("Part 2 Answer is {}", toboggan_corporate_successes);
     Ok(())
 }
 

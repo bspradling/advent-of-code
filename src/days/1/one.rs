@@ -1,16 +1,19 @@
 use anyhow::Result;
-use std::fs::File;
-use std::io::{BufReader, BufRead};
 use log::{debug, info};
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 pub async fn solve() -> Result<()> {
-    let file = File::open("resources/day1.txt")?;
+    let file = File::open("src/days/1/resources/input.txt")?;
     let reader = BufReader::new(file);
 
-    let numbers: Vec<i32> = reader.lines()
+    let numbers: Vec<i32> = reader
+        .lines()
         .map(|line| {
             let string = line.expect("Could not parse line!");
-            string.parse::<i32>().expect("Could not convert string to i32!")
+            string
+                .parse::<i32>()
+                .expect("Could not convert string to i32!")
         })
         .collect();
 
@@ -29,26 +32,31 @@ fn part_one(target: i32, numbers: Vec<i32>) -> Result<i32> {
         }
     }
 
-    Err(anyhow::anyhow!("Could not find two entries that sum to {}", target))
+    Err(anyhow::anyhow!(
+        "Could not find 2 entries that sum to {}",
+        target
+    ))
 }
 
 fn part_two(target: i32, numbers: Vec<i32>) -> Result<i32> {
-
     for i in 0..numbers.len() {
         let value = numbers[i];
 
-        let result = part_one(target - value, numbers[(i+1)..].to_vec());
+        let result = part_one(target - value, numbers[(i + 1)..].to_vec());
 
         match result {
             Ok(answer) => {
-                debug!("Found two sum solution {}", answer);
-                return Ok(answer * value)
-            },
+                debug!("Found 2 sum solution {}", answer);
+                return Ok(answer * value);
+            }
             Err(_error) => {
-                debug!("Couldn't find three sum for index {}", i);
+                debug!("Couldn't find 3 sum for index {}", i);
             }
         }
     }
 
-    Err(anyhow::anyhow!("Could not find three entries that sum to {}", target))
+    Err(anyhow::anyhow!(
+        "Could not find 3 entries that sum to {}",
+        target
+    ))
 }

@@ -13,10 +13,13 @@ async fn main() -> Result<()> {
     env_logger::init();
 
     print_day(1);
-    days::day1::solve().await?;
+    days::one::solve().await?;
 
     print_day(2);
-    days::day2::solve().await?;
+    days::two::solve().await?;
+
+    print_day(3);
+    days::three::solve().await?;
 
     Ok(())
 }
