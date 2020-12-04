@@ -9,6 +9,8 @@ edition = "2018"
 [dependencies]
 anyhow = "1.0.34"
 env_logger = "0.8.2"
+itertools = "0.9.0"
 log = "0.4.11"
+regex = "1.4.2"
 scan-rules = "0.2.0"
 tokio = { version = "0.2", features=["macros"] }

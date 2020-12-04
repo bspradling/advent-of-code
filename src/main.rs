@@ -21,6 +21,9 @@ async fn main() -> Result<()> {
     print_day(3);
     days::three::solve().await?;
 
+    print_day(4);
+    days::four::solve().await?;
+
     Ok(())
 }
 
