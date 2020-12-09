@@ -9,7 +9,7 @@ extern crate scan_rules;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    env::set_var("RUST_LOG", "INFO");
+    env::set_var("RUST_LOG", "DEBUG");
     env_logger::init();
 
     print_day(1);
@@ -30,9 +30,12 @@ async fn main() -> Result<()> {
     print_day(6);
     days::six::solve().await?;
 
+    print_day(7);
+    days::seven::solve().await?;
+
     Ok(())
 }
 
 fn print_day(day: i32) {
-    println!("--------- DAY {} ----------", day);
+    println!("---------------------- DAY {} -----------------------", day);
 }

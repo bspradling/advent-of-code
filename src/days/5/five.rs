@@ -1,5 +1,4 @@
 use anyhow::Result;
-use itertools::{sorted, Itertools};
 use log::{debug, info};
 use std::collections::HashSet;
 use std::ops::Range;
@@ -44,7 +43,11 @@ impl BoardingTicket {
             match char {
                 'F' | 'L' => range.end = half,
                 'B' | 'R' => range.start = half + 1,
-                _ => panic!("Invalid ticket! Row: {}, Column: {}", self.row, self.column),
+                _ => panic!(
+                    "Invalid ticket! Row: {}, Column: {}",
+                    self.row(),
+                    self.column()
+                ),
             }
         }
 
