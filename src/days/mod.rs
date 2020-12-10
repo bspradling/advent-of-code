@@ -1,3 +1,5 @@
+#[path = "8/eight.rs"]
+pub mod eight;
 #[path = "5/five.rs"]
 pub mod five;
 #[path = "4/four.rs"]
