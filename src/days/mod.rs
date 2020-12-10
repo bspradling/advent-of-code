@@ -4,6 +4,8 @@ pub mod eight;
 pub mod five;
 #[path = "4/four.rs"]
 pub mod four;
+#[path = "9/nine.rs"]
+pub mod nine;
 #[path = "1/one.rs"]
 pub mod one;
 #[path = "7/seven.rs"]

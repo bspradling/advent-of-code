@@ -7,24 +7,24 @@ pub async fn solve() -> Result<()> {
     let file = File::open("src/days/1/resources/input.txt")?;
     let reader = BufReader::new(file);
 
-    let numbers: Vec<i32> = reader
+    let numbers: Vec<i64> = reader
         .lines()
         .map(|line| {
             let string = line.expect("Could not parse line!");
             string
-                .parse::<i32>()
+                .parse::<i64>()
                 .expect("Could not convert string to i32!")
         })
         .collect();
 
-    info!("Part 1 Answer is: {}", part_one(2020, numbers.clone())?);
+    info!("Part 1 Answer is: {}", part_one(2020, &numbers.clone())?);
     info!("Part 2 Answer is: {}", part_two(2020, numbers.clone())?);
 
     Ok(())
 }
 
-fn part_one(target: i32, numbers: Vec<i32>) -> Result<i32> {
-    for number in &numbers {
+pub fn part_one(target: i64, numbers: &[i64]) -> Result<i64> {
+    for number in numbers {
         let search_for = target - number;
         if numbers.contains(&search_for) {
             debug!("{} and {} sum to {}", number, search_for, target);
@@ -38,11 +38,11 @@ fn part_one(target: i32, numbers: Vec<i32>) -> Result<i32> {
     ))
 }
 
-fn part_two(target: i32, numbers: Vec<i32>) -> Result<i32> {
+fn part_two(target: i64, numbers: Vec<i64>) -> Result<i64> {
     for i in 0..numbers.len() {
         let value = numbers[i];
 
-        let result = part_one(target - value, numbers[(i + 1)..].to_vec());
+        let result = part_one(target - value, &numbers[(i + 1)..]);
 
         match result {
             Ok(answer) => {
