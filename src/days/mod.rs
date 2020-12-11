@@ -12,6 +12,8 @@ pub mod one;
 pub mod seven;
 #[path = "6/six.rs"]
 pub mod six;
+#[path = "10/ten.rs"]
+pub mod ten;
 #[path = "3/three.rs"]
 pub mod three;
 #[path = "2/two.rs"]

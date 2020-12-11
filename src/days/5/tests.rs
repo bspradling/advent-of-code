@@ -1,3 +1,5 @@
+use crate::days::five::BoardingTicket;
+
 #[test]
 fn test_ticket_parsing() {
     let ticket = BoardingTicket::from("FBFFBFFRLL");
