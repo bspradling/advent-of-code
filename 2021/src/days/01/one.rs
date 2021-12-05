@@ -1,5 +1,6 @@
 use anyhow::Result;
 
+#[cfg(test)]
 mod tests;
 
 pub fn part_one(depths: &[u32]) -> Result<usize> {

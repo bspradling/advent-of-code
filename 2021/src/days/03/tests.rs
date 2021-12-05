@@ -1,6 +1,5 @@
-use crate::days::three::{compute_rates_2, part_one, part_two};
+use crate::days::three::{part_one, part_two};
 use anyhow::Result;
-use std::str::FromStr;
 
 #[test]
 pub fn part_one_solution() -> Result<()> {
@@ -8,7 +7,7 @@ pub fn part_one_solution() -> Result<()> {
         .lines()
         .collect::<Vec<&str>>();
     let actual = part_one(report)?;
-    // println!("{}", actual);
+
     assert_eq!(actual, 749376);
     Ok(())
 }
@@ -19,7 +18,7 @@ pub fn part_two_solution() -> Result<()> {
         .lines()
         .collect::<Vec<&str>>();
     let actual = part_two(report)?;
-    // println!("{}", actual);
+
     assert_eq!(actual, 2372923);
     Ok(())
 }
