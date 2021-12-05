@@ -1,6 +1,6 @@
-use anyhow::{anyhow, Error, Result};
-use std::str::FromStr;
+use anyhow::Result;
 
+#[cfg(test)]
 mod tests;
 
 pub fn part_one(report: Vec<&str>) -> Result<u32> {
@@ -14,7 +14,7 @@ pub fn compute_rates(report: Vec<&str>) -> Result<(String, String)> {
     let entry_length = report[0].len();
 
     let (gamma, epsilon) = (0..entry_length)
-        .map(|i| determine_common_bit_for_column(&report, i, '1').unwrap())
+        .map(|i| determine_common_bit_for_column(&report, i).unwrap())
         .fold(
             (String::new(), String::new()),
             |(gamma, epsilon), x| match x {
@@ -27,24 +27,15 @@ pub fn compute_rates(report: Vec<&str>) -> Result<(String, String)> {
     Ok((gamma, epsilon))
 }
 
-pub fn determine_common_bit_for_column(
-    report: &[&str],
-    column_index: usize,
-    tie: char,
-) -> Result<char> {
+pub fn determine_common_bit_for_column(report: &[&str], column_index: usize) -> Result<char> {
     let (ones, zeros): (Vec<char>, Vec<char>) = report
         .iter()
         .map(|x| (*x).chars().nth(column_index).unwrap())
         .partition(|x| *x == '1');
 
-    println!("{} vs {}", ones.len(), zeros.len());
-    return if ones.len() > zeros.len() {
-        Ok('1')
-    } else if ones.len() < zeros.len() {
-        Ok('0')
-    } else {
-        println!("picking {}", tie);
-        Ok(tie)
+    return match ones.len() < zeros.len() {
+        true => Ok('0'),
+        false => Ok('1'),
     };
 }
 
@@ -71,8 +62,7 @@ fn filter_ratings(
         return Ok(values[0].to_string());
     }
 
-    println!("{:?}", &values);
-    let bit = determine_common_bit_for_column(&values, index, tie)?;
+    let bit = determine_common_bit_for_column(&values, index)?;
 
     filter_ratings(
         values

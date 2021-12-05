@@ -1,6 +1,7 @@
 use anyhow::{anyhow, Error, Result};
 use std::str::FromStr;
 
+#[cfg(test)]
 mod tests;
 
 #[derive(Debug)]
