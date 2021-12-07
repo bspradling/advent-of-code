@@ -2,23 +2,17 @@ use anyhow::Result;
 
 #[derive(Debug)]
 struct Position {
-    coordinates: (usize, usize),
-    r#type: PositionType,
-    status: SeatStatus,
+    _coordinates: (usize, usize),
+    _position_type: PositionType,
 }
 
 impl From<((usize, usize), char)> for Position {
     fn from(tuple: ((usize, usize), char)) -> Self {
         Position {
-            coordinates: tuple.0,
-            r#type: match tuple.1 {
+            _coordinates: tuple.0,
+            _position_type: match tuple.1 {
                 'L' | '#' => PositionType::SEAT,
                 _ => PositionType::FLOOR,
-            },
-            status: match tuple.1 {
-                'L' => SeatStatus::EMPTY,
-                '#' => SeatStatus::OCCUPIED,
-                _ => SeatStatus::EMPTY,
             },
         }
     }
@@ -32,8 +26,8 @@ enum PositionType {
 
 #[derive(Debug)]
 enum SeatStatus {
-    EMPTY,
-    OCCUPIED,
+    _EMPTY,
+    _OCCUPIED,
 }
 
 pub async fn solve() -> Result<()> {

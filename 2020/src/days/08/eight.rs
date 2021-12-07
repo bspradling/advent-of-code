@@ -4,7 +4,6 @@ use std::collections::HashSet;
 
 #[derive(Debug)]
 struct Instruction {
-    index: usize,
     command: String,
     value: i32,
 }
@@ -48,7 +47,6 @@ impl From<(usize, &str)> for Instruction {
     fn from(tuple: (usize, &str)) -> Self {
         let x = tuple.1.split_whitespace().collect::<Vec<&str>>();
         Self {
-            index: tuple.0,
             command: x[0].to_string(),
             value: x[1].parse::<i32>().unwrap(),
         }
