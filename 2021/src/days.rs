@@ -4,9 +4,11 @@ pub mod five;
 pub mod four;
 #[path = "days/01/one.rs"]
 pub mod one;
+#[path = "days/07/seven.rs"]
+pub mod seven;
+#[path = "days/06/six.rs"]
+pub mod six;
 #[path = "days/03/three.rs"]
 pub mod three;
 #[path = "days/02/two.rs"]
 pub mod two;
-#[path = "days/06/six.rs"]
-pub mod six;
