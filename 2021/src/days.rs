@@ -1,3 +1,5 @@
+#[path = "days/08/eight.rs"]
+pub mod eight;
 #[path = "days/05/five.rs"]
 pub mod five;
 #[path = "days/04/four.rs"]
