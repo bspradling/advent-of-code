@@ -11,10 +11,9 @@ pub fn part_one_solution() -> Result<()> {
         })
         .collect::<Vec<(&str, &str)>>();
 
-    println!("INPUT: {:?}", input);
     let result = part_one(input)?;
 
-    // assert_eq!(result, 10718);
+    assert_eq!(result, 7581);
     Ok(())
 }
 
